@@ -3,10 +3,10 @@ const cache = new Cache({ stdTTL: 60 * 60 * 24 });
 
 // reusable middleware function
 const cacheMiddleware = (req, res, next) => {
-    let key = req.baseUrl;
-    if (req.path !== "/") {
+    let key = req.originalUrl;
+    /* if (req.path !== "/") {
         key += req.path;
-    }
+    } */
     try {
         if (cache.has(key)) {
             console.info(`Using cached data for ${key}`);

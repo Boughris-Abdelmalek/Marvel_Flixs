@@ -7,9 +7,15 @@ const {
 
 const getAll = async (req, formatResponse = (data) => data) => {
     const path = req.baseUrl;
+    const { offset, limit } = req.query;
+    const pagination = {
+        offset: parseInt(offset) || 0,
+        limit: parseInt(limit) || 20,
+    };
 
-    const data = await getAllItems(path);
-    cache.set(path, data);
+    const data = await getAllItems(path, pagination);
+    const cacheKey = req.originalUrl;
+    cache.set(cacheKey, data);
 
     return formatResponse(data);
 };

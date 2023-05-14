@@ -1,9 +1,15 @@
 const axios = require("../utils/axios");
 
-const getAllItems = async (url) => {
+const getAllItems = async (url, pagination = { offset: 0, limit: 20 }) => {
     // Fetch all items for a given endpoint
     try {
-        const response = await axios.get(url);
+        const { offset, limit } = pagination;
+        const response = await axios.get(url, {
+            params: {
+                offset,
+                limit,
+            },
+        });
         const items = await response.data;
 
         return items;

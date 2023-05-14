@@ -1,10 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const morgan = require("morgan");
 const IP = require("ip");
 require("dotenv").config();
 
 // Creating express server
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Log the requests
 app.use(morgan("tiny"));
