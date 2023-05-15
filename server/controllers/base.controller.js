@@ -7,13 +7,14 @@ const {
 
 const getAll = async (req, formatResponse = (data) => data) => {
     const path = req.baseUrl;
-    const { offset, limit } = req.query;
-    const pagination = {
+    const { offset, limit, nameStartsWith } = req.query;
+    const filters = {
         offset: parseInt(offset) || 0,
         limit: parseInt(limit) || 20,
+        nameStartsWith: nameStartsWith || "",
     };
 
-    const data = await getAllItems(path, pagination);
+    const data = await getAllItems(path, filters);
     const cacheKey = req.originalUrl;
     cache.set(cacheKey, data);
 

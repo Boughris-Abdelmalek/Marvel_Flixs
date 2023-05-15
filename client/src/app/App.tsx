@@ -1,51 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
-import { getAllCharacters, selectAllCharacters } from "../features/Characters/CharactersSlice";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { useGetAllCharactersQuery } from "../features/Characters/CharactersApiSlice";
-import { nanoid } from "@reduxjs/toolkit";
+import Layout from "./Layout";
+import Characters from "../pages/Characters/Characters";
+import Comics from "../pages/Comics/Comics";
+import Creators from "../pages/Creators/Creators";
+import Events from "../pages/Events";
+import Series from "../pages/Series";
+import Stories from "../pages/Stories";
 
-const App = () => {
-  const [pagination, setPagination] = useState({ offset: 0, limit: 20 });
-
-  const dispatch = useAppDispatch();
-  const characters = useAppSelector(selectAllCharacters);
-  const { data, isLoading } = useGetAllCharactersQuery(pagination); // add the typing
-
-  useEffect(() => {
-    dispatch(getAllCharacters(data));
-  }, [data]);
-
-  const handleNextPage = () => {
-    setPagination((prevPagination) => ({
-      offset: prevPagination.offset + prevPagination.limit,
-      limit: prevPagination.limit,
-    }));
-  };
-
-  const handlePreviousPage = () => {
-    setPagination((prevPagination) => ({
-      offset: prevPagination.offset - prevPagination.limit,
-      limit: prevPagination.limit,
-    }));
-  };
-
-  console.log(characters);
-
+const App: React.FC = () => {
   return (
     <>
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <ul>
-          {characters &&
-            characters.map((chars) => {
-              return <li key={nanoid()}>{chars.name}</li>;
-            })}
-        </ul>
-      )}
-      <button onClick={handlePreviousPage}>previous 20</button>
-      <button onClick={handleNextPage}>next 20</button>
+      <Layout>
+        <Routes>
+          <Route index element={<Comics />} />
+          <Route path="/characters" element={<Characters />} />
+          <Route path="/creators" element={<Creators />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/series" element={<Series />} />
+          <Route path="/stories" element={<Stories />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Layout>
     </>
   );
 };

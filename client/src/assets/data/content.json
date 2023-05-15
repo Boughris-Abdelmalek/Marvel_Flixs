@@ -1,0 +1,32 @@
+{
+  "characters": {
+    "banner": "https://cdn.marvel.com/content/1x/characters_art_mas_dsk_01.jpg",
+    "title": "Characters",
+    "description": "Explore a diverse cast of heroes and villains from the Marvel Universe!"
+  },
+  "comics": {
+    "banner": "https://cdn.marvel.com/content/1x/news_articles-mas_dsk_01.jpg",
+    "title": "Comics",
+    "description": "Dive into a world of exciting stories and illustrations!"
+  },
+  "creators": {
+    "banner": "https://cdn.marvel.com/u/prod/marvel/i/mg/9/30/645ad665d0da4.jpg",
+    "title": "Creators",
+    "description": "Discover the talented individuals behind your favorite Marvel stories!"
+  },
+  "events": {
+    "banner": "https://cdn.marvel.com/u/prod/marvel/i/mg/8/03/6440334674d8b.jpg",
+    "title": "Events",
+    "description": "Immerse yourself in thrilling events and crossovers!"
+  },
+  "series": {
+    "banner": "https://cdn.marvel.com/u/prod/marvel/i/mg/6/60/645ad3505df82.jpg",
+    "title": "Series",
+    "description": "Embark on epic journeys through ongoing series!"
+  },
+  "stories": {
+    "banner": "https://cdn.marvel.com/u/prod/marvel/i/mg/d/b0/6447f81067333.jpg",
+    "title": "Stories",
+    "description": "Uncover captivating tales from the Marvel Universe!"
+  }
+}

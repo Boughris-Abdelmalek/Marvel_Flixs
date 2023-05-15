@@ -1,5 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  list-style: none;
+  /* outline: 1px solid red; */
+}
+
+body {
+  color: #202020;
 }
