@@ -38,7 +38,13 @@ export const comicsApiSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+
+    getComicsById: builder.query({
+      query: (id: number) => ({
+        url: `comics/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllComicsQuery } = comicsApiSlice;
+export const { useGetAllComicsQuery, useGetComicsByIdQuery } = comicsApiSlice;

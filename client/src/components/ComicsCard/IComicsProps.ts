@@ -1,7 +1,9 @@
 import { Creators } from "../../features/Comics/IComics";
 
 export interface IComicsProps {
-  image: string;
-  name: string;
-  credit: Creators;
+  id: string;
+  thumbnail: string;
+  title: string;
+  creators: Creators;
+  key: string;
 }

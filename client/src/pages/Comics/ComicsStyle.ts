@@ -6,7 +6,7 @@ export const CharactersListSection = styled.section`
   align-items: center;
   flex-direction: column;
   height: 100%;
-  max-width: 1240px;
+  max-width: 1244px;
   margin: 0 auto;
   padding-block: 1rem;
 `;
@@ -20,23 +20,23 @@ export const CardsGrid = styled.div`
   width: 100%;
   padding-block: 1rem;
 
-  @media (max-width: 1023px) {
+  @media (max-width: 1244px) {
     grid-template-columns: repeat(5, 1fr);
   }
 
-  @media (max-width: 871px) {
+  @media (max-width: 1025px) {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  @media (max-width: 693px) {
+  @media (max-width: 850px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 512px) {
+  @media (max-width: 630px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 240px) {
+  @media (max-width: 420px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `;

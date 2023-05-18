@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   ComicCardContainer,
@@ -11,17 +12,25 @@ import {
 } from "./ComicCardStyles";
 import { IComicsProps } from "./IComicsProps";
 
-const ComicCard: React.FC<IComicsProps> = ({ image, name, credit }) => {
+const ComicCard: React.FC<IComicsProps> = (comic) => {
+  const { id, thumbnail, title, creators } = comic;
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/comics/${id}`);
+  };
+
   return (
-    <ComicCardContainer>
+    <ComicCardContainer onClick={handleClick}>
       <ComicImageContainer>
-        <ComicImage src={image} alt={name} />
+        <ComicImage src={thumbnail} alt={title} />
       </ComicImageContainer>
       <ComicCardTextContainer>
-        <ComicCardTitle>{name}</ComicCardTitle>
+        <ComicCardTitle>{title}</ComicCardTitle>
         <ComicCardCreditContainer>
-          <ComicCardCredit>{credit.penciler}</ComicCardCredit>
-          <ComicCardCredit>{credit.writer}</ComicCardCredit>
+          <ComicCardCredit>{creators.penciler}</ComicCardCredit>
+          <ComicCardCredit>{creators.writer}</ComicCardCredit>
         </ComicCardCreditContainer>
       </ComicCardTextContainer>
     </ComicCardContainer>

@@ -27,8 +27,8 @@ const Comics: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const dispatch = useAppDispatch();
-  const characters = useAppSelector(selectAllComics) || [];
-  const charactersCount = useAppSelector(selectAllComicsCount);
+  const comics = useAppSelector(selectAllComics) || [];
+  const comicssCount = useAppSelector(selectAllComicsCount);
   const { data, isFetching } = useGetAllComicsQuery({
     ...pagination,
     nameStartsWith: searchQuery,
@@ -63,14 +63,14 @@ const Comics: React.FC = () => {
         ) : (
           <>
             <CardsGrid>
-              {characters &&
-                characters.map(({ thumbnail, title, creators }) => (
-                  <ComicCard key={nanoid()} image={thumbnail} name={title} credit={creators} />
+              {comics &&
+                comics.map((comic) => (
+                  <ComicCard key={nanoid()} {...comic} />
                 ))}
             </CardsGrid>
             <Paginate
               pagination={pagination}
-              charactersCount={charactersCount}
+              charactersCount={comicssCount}
               onPageChange={handlePaginationChange}
             />
           </>

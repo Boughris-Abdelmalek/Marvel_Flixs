@@ -26,12 +26,15 @@ export interface APIResponse {
   };
 }
 
+export interface Comics {
+  id: string;
+  title: string;
+  thumbnail: string;
+  creators: Creators;
+}
+
 export interface IComicsState {
-  comics: {
-    id: string;
-    title: string;
-    thumbnail: string;
-    creators: Creators;
-  }[];
+  comics: Comics[];
+  comic: Comics | null;
   total: number;
 }
