@@ -43,6 +43,16 @@ export const comicsApiSlice = apiSlice.injectEndpoints({
       query: (id: number) => ({
         url: `comics/${id}`,
       }),
+      transformResponse: (response) => {
+        const comic = response.data.results[0];
+        return {
+          data: {
+            id: comic.id,
+            title: comic.title,
+            thumbnail: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+          },
+        };
+      },
     }),
   }),
 });

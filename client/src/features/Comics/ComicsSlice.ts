@@ -17,7 +17,7 @@ const comicsSlice = createSlice({
       state.total = action.payload.data.total;
     },
     getComicsById: (state, action) => {
-      state.comic = action.payload.data.results;
+      state.comic = action.payload.data;
     },
   },
 });
@@ -28,3 +28,5 @@ export default comicsSlice.reducer;
 export const selectAllComics = (state: RootState) => state.comics.comics;
 
 export const selectAllComicsCount = (state: RootState) => state.comics.total;
+
+export const selectComicById = (state: RootState) => state.comics.comic;
