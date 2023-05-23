@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { useGetComicsByIdQuery } from "../../../features/Comics/ComicsApiSlice";
 import { getComicsById, selectComicById } from "../../../features/Comics/ComicsSlice";
-import { ComicHeroSection } from "./Styles";
+import { ComicHeroSection, ImageContainer, Image, InfosContainer, Title, PublishedDate, CreditContainer, Role, Creditor, Description, ComicDetailSection } from "./Styles";
 
 const Comic: React.FC = () => {
-  const { id } = useParams();
-  const { data } = useGetComicsByIdQuery(id);
+  const { id } = useParams<{ id: string }>();
+  const { data } = useGetComicsByIdQuery(Number(id));
 
   const dispatch = useAppDispatch();
   const comic = useAppSelector(selectComicById);
@@ -25,33 +25,26 @@ const Comic: React.FC = () => {
   return (
     <>
       <ComicHeroSection>
-        <div>
-          <img src={`${comic?.thumbnail}`} alt="Comic Image" />
-        </div>
-        <div>
-          <h1>{comic?.title}</h1>
-          <h3>Published date</h3>
-          <span>
-            <h5>writter</h5>
-            <p>writter name</p>
-          </span>
-          <span>
-            <h5>Penciler</h5>
-            <p>penciler name</p>
-          </span>
-        </div>
-        <span>
-          <h5>Cover Artist</h5>
-          <p>cover artist name</p>
-        </span>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum quibusdam, reprehenderit
-          accusantium minus impedit nulla nesciunt in obcaecati ex architecto.
-        </p>
+        <ImageContainer>
+          <Image src={`${comic?.thumbnail}`} alt="Comic Image" />
+        </ImageContainer>
+        <InfosContainer>
+          <Title>{comic?.title}</Title>
+          <PublishedDate>Published date: {comic?.publishedDate}</PublishedDate>
+          <CreditContainer>
+            <Role>writter</Role>
+            <Creditor>{comic?.writer}</Creditor>
+          </CreditContainer>
+          <CreditContainer>
+            <Role>Penciler</Role>
+            <Creditor>{comic?.penciler}</Creditor>
+          </CreditContainer>
+          <Description>{comic?.description}</Description>
+        </InfosContainer>
       </ComicHeroSection>
-      <section>
+      <ComicDetailSection>
         <h3>Details</h3>
-      </section>
+      </ComicDetailSection>
     </>
   );
 };
