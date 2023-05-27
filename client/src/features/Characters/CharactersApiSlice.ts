@@ -31,7 +31,32 @@ export const charactersApiSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+
+    getCharacterById: builder.query({
+      query: (id: number) => ({
+        url: `characters/${id}`,
+      }),
+      transformResponse: (response) => {
+        const character = response?.data?.results[0];
+        /* const description =
+          character.description ||
+          character.textObjects.find((obj) => obj.type === "issue_solicit_text")?.text ||
+          "";
+        const formattedDescription = description
+          .replace(/<br\s*\/?>/gi, "\n")
+          .replace(/<\/?[^>]+(>|$)/g, ""); // remove html elements from the descriptions */
+
+        return {
+          data: {
+            id: character.id,
+            title: character.name,
+            thumbnail: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+            description: character.description,
+          },
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetAllCharactersQuery } = charactersApiSlice;
+export const { useGetAllCharactersQuery, useGetCharacterByIdQuery } = charactersApiSlice;

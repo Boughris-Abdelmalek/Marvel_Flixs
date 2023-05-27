@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ComicHeroSection = styled.section<{ backgroundImage: string }>`
+export const DetailsHeroSection = styled.section<{ backgroundImage: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@ export const ComicHeroSection = styled.section<{ backgroundImage: string }>`
   min-height: calc(100vh - 92px);
 `;
 
-export const ComicHeroContainer = styled.div`
+export const DetailHeroContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -77,8 +77,6 @@ export const ComicDetailSection = styled.section`
   padding: 2rem;
   min-height: 50vh;
   width: 100%;
-  background-color: #202020;
-  color: white;
   `;
 
 export const DetailsContainer = styled.div`

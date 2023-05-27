@@ -67,8 +67,8 @@ const Characters: React.FC = () => {
           <>
             <CardsGrid>
               {characters &&
-                characters.map(({ thumbnail, name }) => (
-                  <CharacterCard key={nanoid()} image={thumbnail} name={name} />
+                characters.map(({ thumbnail, name, id }) => (
+                  <CharacterCard key={nanoid()} image={thumbnail} name={name} id={id} />
                 ))}
             </CardsGrid>
             <Paginate
