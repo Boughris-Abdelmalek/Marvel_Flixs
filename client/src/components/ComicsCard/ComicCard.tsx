@@ -12,13 +12,13 @@ import {
 } from "./ComicCardStyles";
 import { IComicsProps } from "./IComicsProps";
 
-const ComicCard: React.FC<IComicsProps> = (comic) => {
-  const { id, thumbnail, title, creators } = comic;
+const ComicCard: React.FC<IComicsProps> = ({ comic, redirectUrl }) => {
+  const { thumbnail, title, creators } = comic;
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/comics/${id}`);
+    navigate(redirectUrl);
   };
 
   return (
@@ -28,10 +28,12 @@ const ComicCard: React.FC<IComicsProps> = (comic) => {
       </ComicImageContainer>
       <ComicCardTextContainer>
         <ComicCardTitle>{title}</ComicCardTitle>
-        <ComicCardCreditContainer>
-          <ComicCardCredit>{creators.penciler}</ComicCardCredit>
-          <ComicCardCredit>{creators.writer}</ComicCardCredit>
-        </ComicCardCreditContainer>
+        {creators && (
+          <ComicCardCreditContainer>
+            <ComicCardCredit>{creators.penciler}</ComicCardCredit>
+            <ComicCardCredit>{creators.writer}</ComicCardCredit>
+          </ComicCardCreditContainer>
+        )}
       </ComicCardTextContainer>
     </ComicCardContainer>
   );

@@ -1,45 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { nanoid } from "@reduxjs/toolkit";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import {
-  selectAllCharacters,
-  getAllCharacters,
-  selectAllCharactersCount,
-} from "../../features/Characters/CharactersSlice";
-import { useGetAllCharactersQuery } from "../../features/Characters/CharactersApiSlice";
-
-import CircularProgress from "@mui/material/CircularProgress";
-
 import Hero from "../../components/HeroBanner/Hero";
-import CharacterCard from "../../components/CharacterCard/CharacterCard";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import Paginate from "../../components/Pagination/Pagination";
-
 import content from "../../assets/data/content.json";
-import {
-  CardsGrid,
-  CharactersListSection,
-  SectionTitle,
-  SectionHeader,
-  LoaderContainer,
-} from "./CharactersStyle";
-import { Pagination } from "../../components/Pagination/IPagination";
 
-const Characters: React.FC = () => {
+import {
+  CharactersListSection,
+  SectionHeader,
+  SectionTitle,
+  LoaderContainer,
+  CardsGrid,
+} from "./styles";
+
+import SearchBar from "../../components/SearchBar/SearchBar";
+
+import { Pagination } from "../../components/Pagination/IPagination";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+
+import { CircularProgress } from "@mui/material";
+import Paginate from "../../components/Pagination/Pagination";
+import ComicCard from "../../components/ComicsCard/ComicCard";
+import { nanoid } from "@reduxjs/toolkit";
+import { getAllSeries, selectAllSeries, selectAllSeriesCount } from "../../features/Series/SeriesSlice";
+import { useGetAllSeriesQuery } from "../../features/Series/SeriesApiSlice";
+
+const Series: React.FC = () => {
   const [pagination, setPagination] = useState<Pagination>({ offset: 0, limit: 36 });
   const [searchQuery, setSearchQuery] = useState("");
 
   const dispatch = useAppDispatch();
-  const characters = useAppSelector(selectAllCharacters) || [];
-  const charactersCount = useAppSelector(selectAllCharactersCount);
-  const { data, isFetching } = useGetAllCharactersQuery({
+  const series = useAppSelector(selectAllSeries) || [];
+  const seriesCount = useAppSelector(selectAllSeriesCount);
+  const { data, isFetching } = useGetAllSeriesQuery({
     ...pagination,
     nameStartsWith: searchQuery,
   });
 
   useEffect(() => {
     if (data) {
-      dispatch(getAllCharacters(data));
+      dispatch(getAllSeries(data));
     }
   }, [data]);
 
@@ -50,13 +47,12 @@ const Characters: React.FC = () => {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
   };
-
   return (
     <>
-      <Hero {...content.characters} />
+      <Hero {...content.series} />
       <CharactersListSection>
         <SectionHeader>
-          <SectionTitle>Marvel Characters List</SectionTitle>
+          <SectionTitle>Marvel Comics List</SectionTitle>
           <SearchBar onSearch={handleSearch} />
         </SectionHeader>
         {isFetching ? (
@@ -66,14 +62,14 @@ const Characters: React.FC = () => {
         ) : (
           <>
             <CardsGrid>
-              {characters &&
-                characters.map(({ thumbnail, name, id }) => (
-                  <CharacterCard key={nanoid()} image={thumbnail} name={name} redirectUrl={`/characters/${id}`} />
+              {series &&
+                series.map((serie) => (
+                  <ComicCard key={nanoid()} comic={serie} redirectUrl={`/series/${serie.id}`} />
                 ))}
             </CardsGrid>
             <Paginate
               pagination={pagination}
-              charactersCount={charactersCount}
+              charactersCount={seriesCount}
               onPageChange={handlePaginationChange}
             />
           </>
@@ -83,4 +79,4 @@ const Characters: React.FC = () => {
   );
 };
 
-export default Characters;
+export default Series;

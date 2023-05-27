@@ -4,11 +4,11 @@ import { ICharacterCardProps } from "./ICharacterCardProps";
 import { CharacterCardContainer, CharacterImageContainer, CharacterImage, CharacterCardTextContainer, CharacterCardText } from "./CharacterCardStyles";
 import { useNavigate } from "react-router-dom";
 
-const CharacterCard: React.FC<ICharacterCardProps> = ({ image, name, id }) => {
+const CharacterCard: React.FC<ICharacterCardProps> = ({ image, name, redirectUrl }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/characters/${id}`)
+    navigate(redirectUrl)
   }
 
   return (

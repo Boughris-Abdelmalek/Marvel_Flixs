@@ -1,7 +1,6 @@
 const { getAll, getById, getFiltered } = require("./base.controller");
 
 const getAllComics = async (req, res) => {
-    console.log("worked");
     console.info(req.baseUrl);
     try {
         const comics = await getAll(req);

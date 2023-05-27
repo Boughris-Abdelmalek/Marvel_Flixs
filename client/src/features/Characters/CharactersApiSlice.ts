@@ -38,13 +38,6 @@ export const charactersApiSlice = apiSlice.injectEndpoints({
       }),
       transformResponse: (response) => {
         const character = response?.data?.results[0];
-        /* const description =
-          character.description ||
-          character.textObjects.find((obj) => obj.type === "issue_solicit_text")?.text ||
-          "";
-        const formattedDescription = description
-          .replace(/<br\s*\/?>/gi, "\n")
-          .replace(/<\/?[^>]+(>|$)/g, ""); // remove html elements from the descriptions */
 
         return {
           data: {

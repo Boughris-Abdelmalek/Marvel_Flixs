@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import {
-  selectAllCharacters,
-  getAllCharacters,
-  selectAllCharactersCount,
-} from "../../features/Characters/CharactersSlice";
-import { useGetAllCharactersQuery } from "../../features/Characters/CharactersApiSlice";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -24,22 +18,24 @@ import {
   LoaderContainer,
 } from "./CreatorsStyles";
 import { Pagination } from "../../components/Pagination/IPagination";
+import { getAllCreators, selectAllCreators, selectAllCreatorsCount } from "../../features/Creators/CreatorsSlice";
+import { useGetAllCreatorsQuery } from "../../features/Creators/CreatorsAPiSlice";
 
 const Creators: React.FC = () => {
   const [pagination, setPagination] = useState<Pagination>({ offset: 0, limit: 36 });
   const [searchQuery, setSearchQuery] = useState("");
 
   const dispatch = useAppDispatch();
-  const characters = useAppSelector(selectAllCharacters) || [];
-  const charactersCount = useAppSelector(selectAllCharactersCount);
-  const { data, isFetching } = useGetAllCharactersQuery({
+  const creators = useAppSelector(selectAllCreators) || [];
+  const creatorsCount = useAppSelector(selectAllCreatorsCount);
+  const { data, isFetching } = useGetAllCreatorsQuery({
     ...pagination,
     nameStartsWith: searchQuery,
   });
 
   useEffect(() => {
     if (data) {
-      dispatch(getAllCharacters(data));
+      dispatch(getAllCreators(data));
     }
   }, [data]);
 
@@ -66,14 +62,14 @@ const Creators: React.FC = () => {
         ) : (
           <>
             <CardsGrid>
-              {characters &&
-                characters.map(({ thumbnail, name }) => (
-                  <CharacterCard key={nanoid()} image={thumbnail} name={name} />
+              {creators &&
+                creators.map(({ thumbnail, name, id }) => (
+                  <CharacterCard key={nanoid()} image={thumbnail} name={name} redirectUrl={`/creators/${id}`} />
                 ))}
             </CardsGrid>
             <Paginate
               pagination={pagination}
-              charactersCount={charactersCount}
+              charactersCount={creatorsCount}
               onPageChange={handlePaginationChange}
             />
           </>
