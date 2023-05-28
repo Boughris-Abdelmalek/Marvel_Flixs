@@ -41,7 +41,7 @@ export const creatorsApiSlice = apiSlice.injectEndpoints({
         return {
           data: {
             id: creator.id,
-            title: creator.fullName,
+            name: creator.fullName,
             thumbnail: `${creator.thumbnail.path}.${creator.thumbnail.extension}`,
             description: creator.description,
           },

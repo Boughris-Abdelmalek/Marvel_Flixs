@@ -18,7 +18,7 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
           .filter((event) => !event.thumbnail.path.includes("image_not_available"))
           .map((event) => ({
             id: event.id,
-            title: event.title,
+            name: event.title,
             thumbnail: `${event.thumbnail.path}.${event.thumbnail.extension}`,
           }));
 
@@ -41,7 +41,7 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
         return {
           data: {
             id: event.id,
-            title: event.title,
+            name: event.title,
             thumbnail: `${event.thumbnail.path}.${event.thumbnail.extension}`,
             description: event.description,
           },

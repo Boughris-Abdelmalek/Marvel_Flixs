@@ -17,6 +17,11 @@ export const DetailHeroContainer = styled.div`
   align-items: flex-start;
   color: white;
   gap: 3rem;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    padding: 2rem;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -45,7 +50,7 @@ export const Title = styled.h1`
 export const SubTitle = styled.h3`
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
-`
+`;
 
 export const PublishedDate = styled.p``;
 
@@ -54,6 +59,11 @@ export const CreditorsContainer = styled.div`
   align-items: flex-start;
   gap: 15rem;
   width: 100%;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 
 export const CreditContainer = styled.span``;
@@ -66,7 +76,11 @@ export const Role = styled.p`
 
 export const Creditor = styled.p``;
 
-export const Description = styled.p``;
+export const Description = styled.p`
+  @media (max-width: 550px) {
+    padding: 2rem;
+  }
+`;
 
 export const ComicDetailSection = styled.section`
   display: flex;
@@ -77,7 +91,7 @@ export const ComicDetailSection = styled.section`
   padding: 2rem;
   min-height: 50vh;
   width: 100%;
-  `;
+`;
 
 export const DetailsContainer = styled.div`
   display: flex;
@@ -85,14 +99,18 @@ export const DetailsContainer = styled.div`
   align-items: flex-start;
   width: 100%;
   height: 100%;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 
-export const DetailContainer = styled.div`
-`;
+export const DetailContainer = styled.div``;
 
 export const DetailElements = styled.div`
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
 `;
 
 export const DetailElement = styled.p`

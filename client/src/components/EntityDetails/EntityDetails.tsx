@@ -41,11 +41,11 @@ const EntityDetails = ({ renderHook, selectEntityById, getEntityById }: IProps):
             <Image src={entity.thumbnail} alt="Entity Image" />
           </ImageContainer>
           <InfosContainer>
-            <Title>{entity.title}</Title>
+            <Title>{entity.name}</Title>
           </InfosContainer>
         </DetailHeroContainer>
       </DetailsHeroSection>
-      {entity.description !== "" && entity.description !== "null" && (
+      {entity.description && entity.description !== "" && entity.description !== "null" && (
         <DescriptionSection>
           <Title>Description</Title>
           <DescriptionText>{entity.description}</DescriptionText>

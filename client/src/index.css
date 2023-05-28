@@ -10,6 +10,12 @@
   /* outline: 1px solid red; */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: #202020;
+  min-height: 100vh;
+  width: 100%;
 }

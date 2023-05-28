@@ -16,12 +16,12 @@ const Details: React.FC = () => {
   const dispatch = useAppDispatch();
   const comic = useAppSelector(selectComicById);
 
-  if (!comic) {
+  /* if (!comic) {
     return null;
-  }
-
-  const { thumbnail, title, publishedDate, creators, description, details } = comic || {};
-
+  } */
+  
+  const { thumbnail, title, publishedDate, writer, penciler, description, details } = comic || {};
+  
   useEffect(() => {
     if (data) {
       dispatch(getComicsById(data));
@@ -35,8 +35,8 @@ const Details: React.FC = () => {
         thumbnail={thumbnail}
         title={title}
         publishedDate={publishedDate}
-        writer={creators.writer}
-        penciler={creators.penciler}
+        writer={writer}
+        penciler={penciler}
         description={description}
       />
       <ComicsDetails details={details} />

@@ -11,7 +11,7 @@ import Events from "../pages/Events/Events";
 import Event from "../pages/Events/Details";
 import Series from "../pages/Series/Series";
 import Serie from "../pages/Series/Details";
-import Comic from "../components/ComicsDetails/ComicsDetails";
+import Comic from "../pages/Comics/Details";
 
 const App: React.FC = () => {
   return (

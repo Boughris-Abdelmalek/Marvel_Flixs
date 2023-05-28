@@ -7,12 +7,24 @@ export const FooterSection = styled.footer`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 5rem;
   min-height: 35vh;
   width: 100%;
+  padding: 2rem;
   background-color: #202020;
   color: white;
+
+  @media (max-width: 900px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 450px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Section = styled.div`
@@ -22,12 +34,13 @@ export const Section = styled.div`
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  min-height: 30vh;
+  max-height: 30vh;
   min-width: 10rem;
 `;
 
 export const Logo = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
 export const SectionTitle = styled.h3`

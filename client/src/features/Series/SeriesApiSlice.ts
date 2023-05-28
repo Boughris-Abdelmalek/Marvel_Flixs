@@ -18,7 +18,7 @@ export const seriesApiSlice = apiSlice.injectEndpoints({
           .filter((serie) => !serie.thumbnail.path.includes("image_not_available"))
           .map((serie) => ({
             id: serie.id,
-            title: serie.title,
+            name: serie.title,
             thumbnail: `${serie.thumbnail.path}.${serie.thumbnail.extension}`,
           }));
 
@@ -41,7 +41,7 @@ export const seriesApiSlice = apiSlice.injectEndpoints({
         return {
           data: {
             id: serie.id,
-            title: serie.title,
+            name: serie.title,
             thumbnail: `${serie.thumbnail.path}.${serie.thumbnail.extension}`,
             description: serie.description,
           },

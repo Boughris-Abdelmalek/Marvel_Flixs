@@ -17,11 +17,19 @@ export const DetailHeroContainer = styled.div`
   align-items: center;
   gap: 5rem;
   color: white;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageContainer = styled.div`
   width: 30rem;
   aspect-ratio: 3/4;
+
+  @media (max-width: 1100px) {
+    width: 20rem;
+  }
 `;
 
 export const Image = styled.img`
@@ -34,16 +42,32 @@ export const InfosContainer = styled.div``;
 
 export const Title = styled.h1`
   font-size: 5rem;
+
+  @media (max-width: 1100px) {
+    font-size: 3rem;
+  }
 `;
 
 export const DescriptionSection = styled.section`
   padding: 10rem;
   min-height: 50vh;
   width: 100%;
-  min-height: 50vh;
+
+  @media (max-width: 1100px) {
+    padding: 3rem;
+  }
 `;
 
 export const DescriptionText = styled.h3`
-  font-size: 2rem;
+  font-size: 2vw;
   margin-top: 2rem;
+  width: 100%;
+
+  @media (max-width: 1100px) {
+    font-size: 3vw;
+  }
+
+  @media (max-width: 810px) {
+    font-size: 1.25rem;
+  }
 `;
