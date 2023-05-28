@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import CircularProgress from "@mui/material/CircularProgress";
@@ -9,22 +8,16 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Paginate from "../../components/Pagination/Pagination";
 
 import content from "../../assets/data/content.json";
-import {
-  CardsGrid,
-  CharactersListSection,
-  SectionTitle,
-  SectionHeader,
-  LoaderContainer,
-} from "./ComicsStyle";
+import { CharactersListSection, SectionTitle, SectionHeader, LoaderContainer } from "./styles";
 import {
   getAllComics,
   selectAllComics,
   selectAllComicsCount,
 } from "../../features/Comics/ComicsSlice";
 import { useGetAllComicsQuery } from "../../features/Comics/ComicsApiSlice";
-import ComicCard from "../../components/ComicsCard/ComicCard";
 
 import { Pagination } from "../../components/Pagination/IPagination";
+import CardList from "../../components/Card/CardList";
 
 const Comics: React.FC = () => {
   const [pagination, setPagination] = useState<Pagination>({ offset: 0, limit: 36 });
@@ -66,12 +59,7 @@ const Comics: React.FC = () => {
           </LoaderContainer>
         ) : (
           <>
-            <CardsGrid>
-              {comics &&
-                comics.map((comic) => (
-                  <ComicCard key={nanoid()} comic={comic} redirectUrl={`/comics/${comic.id}`} />
-                ))}
-            </CardsGrid>
+            <CardList items={comics} redirectUrl="/comics" />
             <Paginate
               pagination={pagination}
               charactersCount={comicssCount}

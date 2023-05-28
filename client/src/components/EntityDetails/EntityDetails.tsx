@@ -1,6 +1,8 @@
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+
+import { IProps } from "./IProps";
 
 import {
   DetailsHeroSection,
@@ -9,49 +11,48 @@ import {
   InfosContainer,
   Image,
   Title,
-  DescriptionSection,
   DescriptionText,
+  DescriptionSection,
 } from "./styles";
-import { getSeriesById, selectSeriesById } from "../../features/Series/SeriesSlice";
-import { useGetSeriesByIdQuery } from "../../features/Series/SeriesApiSlice";
 
-const Details: FC = () => {
+const EntityDetails = ({ renderHook, selectEntityById, getEntityById }: IProps): JSX.Element => {
   const { id } = useParams<{ id: string }>();
-  const { data } = useGetSeriesByIdQuery(Number(id));
 
   const dispatch = useAppDispatch();
-  const serie = useAppSelector(selectSeriesById);
+  const entity = useAppSelector(selectEntityById);
+
+  const { isLoading, data } = renderHook(Number(id));
 
   useEffect(() => {
     if (data) {
-      dispatch(getSeriesById(data));
+      dispatch(getEntityById(data));
     }
   }, [data]);
 
-  if (!serie) {
+  if (isLoading || !entity) {
     return null;
   }
 
   return (
     <>
-      <DetailsHeroSection backgroundImage={serie.thumbnail}>
+      <DetailsHeroSection backgroundImage={entity.thumbnail}>
         <DetailHeroContainer>
           <ImageContainer>
-            <Image src={serie.thumbnail} alt="Comic Image" />
+            <Image src={entity.thumbnail} alt="Entity Image" />
           </ImageContainer>
           <InfosContainer>
-            <Title>{serie.title}</Title>
+            <Title>{entity.title}</Title>
           </InfosContainer>
         </DetailHeroContainer>
       </DetailsHeroSection>
-      {serie.description && (
+      {entity.description !== "" && entity.description !== "null" && (
         <DescriptionSection>
           <Title>Description</Title>
-          <DescriptionText>{serie.description}</DescriptionText>
+          <DescriptionText>{entity.description}</DescriptionText>
         </DescriptionSection>
       )}
     </>
   );
 };
 
-export default Details;
+export default EntityDetails;

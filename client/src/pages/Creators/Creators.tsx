@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
 import Hero from "../../components/HeroBanner/Hero";
-import CharacterCard from "../../components/CharacterCard/CharacterCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Paginate from "../../components/Pagination/Pagination";
 
 import content from "../../assets/data/content.json";
 import {
-  CardsGrid,
   CharactersListSection,
   SectionTitle,
   SectionHeader,
   LoaderContainer,
-} from "./CreatorsStyles";
+} from "./styles";
 import { Pagination } from "../../components/Pagination/IPagination";
-import { getAllCreators, selectAllCreators, selectAllCreatorsCount } from "../../features/Creators/CreatorsSlice";
+import {
+  getAllCreators,
+  selectAllCreators,
+  selectAllCreatorsCount,
+} from "../../features/Creators/CreatorsSlice";
 import { useGetAllCreatorsQuery } from "../../features/Creators/CreatorsAPiSlice";
+import CardList from "../../components/Card/CardList";
 
 const Creators: React.FC = () => {
   const [pagination, setPagination] = useState<Pagination>({ offset: 0, limit: 36 });
@@ -61,12 +63,7 @@ const Creators: React.FC = () => {
           </LoaderContainer>
         ) : (
           <>
-            <CardsGrid>
-              {creators &&
-                creators.map(({ thumbnail, name, id }) => (
-                  <CharacterCard key={nanoid()} image={thumbnail} name={name} redirectUrl={`/creators/${id}`} />
-                ))}
-            </CardsGrid>
+            <CardList items={creators} redirectUrl="/creators" />
             <Paginate
               pagination={pagination}
               charactersCount={creatorsCount}

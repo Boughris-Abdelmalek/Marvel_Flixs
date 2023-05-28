@@ -3,15 +3,15 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Layout from "./Layout";
 import Characters from "../pages/Characters/Characters";
-import Character from "../components/CharacterDetails/Details";
+import Character from "../pages/Characters/Details";
 import Comics from "../pages/Comics/Comics";
 import Creators from "../pages/Creators/Creators";
-import Creator from "../components/CreatorsDetails/Details";
+import Creator from "../pages/Creators/Details";
 import Events from "../pages/Events/Events";
-import Event from "../components/EventsDetails/Details";
+import Event from "../pages/Events/Details";
 import Series from "../pages/Series/Series";
-import Serie from "../components/SeriesDetails/Details";
-import Comic from "../components/ComicsDetails/Details";
+import Serie from "../pages/Series/Details";
+import Comic from "../components/ComicsDetails/ComicsDetails";
 
 const App: React.FC = () => {
   return (

@@ -13,9 +13,33 @@ import {
   NavigationLink,
   NavLink,
   SearchIconContainer,
-} from "./HeaderStyles";
+} from "./styles";
+import { nanoid } from "@reduxjs/toolkit";
 
-const Header: React.FC = () => {
+const Header = (): JSX.Element => {
+  const navigation = [
+    {
+      name: "comics",
+      url: "/",
+    },
+    {
+      name: "characters",
+      url: "/characters",
+    },
+    {
+      name: "creators",
+      url: "/creators",
+    },
+    {
+      name: "events",
+      url: "/events",
+    },
+    {
+      name: "series",
+      url: "/series",
+    },
+  ];
+
   return (
     <HeaderContainer>
       <HeaderTop>
@@ -28,24 +52,11 @@ const Header: React.FC = () => {
       </HeaderTop>
       <Navigation>
         <NavigationLinks>
-          <NavigationLink>
-            <NavLink to="/">COMICS</NavLink>
-          </NavigationLink>
-          <NavigationLink>
-            <NavLink to="/characters">CHARACTERS</NavLink>
-          </NavigationLink>
-          <NavigationLink>
-            <NavLink to="/creators">CREATORS</NavLink>
-          </NavigationLink>
-          <NavigationLink>
-            <NavLink to="/events">EVENTS</NavLink>
-          </NavigationLink>
-          <NavigationLink>
-            <NavLink to="/series">SERIES</NavLink>
-          </NavigationLink>
-          <NavigationLink>
-            <NavLink to="/stories">STORIES</NavLink>
-          </NavigationLink>
+          {Object.values(navigation).map((nav) => (
+            <NavigationLink key={nanoid()}>
+              <NavLink to={nav.url}>{nav.name}</NavLink>
+            </NavigationLink>
+          ))}
         </NavigationLinks>
       </Navigation>
     </HeaderContainer>

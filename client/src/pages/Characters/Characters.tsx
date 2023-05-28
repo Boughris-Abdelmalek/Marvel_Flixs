@@ -22,7 +22,7 @@ import {
   SectionTitle,
   SectionHeader,
   LoaderContainer,
-} from "./CharactersStyle";
+} from "./styles";
 import { Pagination } from "../../components/Pagination/IPagination";
 
 const Characters: React.FC = () => {

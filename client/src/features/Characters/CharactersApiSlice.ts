@@ -36,13 +36,13 @@ export const charactersApiSlice = apiSlice.injectEndpoints({
       query: (id: number) => ({
         url: `characters/${id}`,
       }),
-      transformResponse: (response) => {
+      transformResponse: (response: APIResponse) => {
         const character = response?.data?.results[0];
 
         return {
           data: {
             id: character.id,
-            title: character.name,
+            name: character.name,
             thumbnail: `${character.thumbnail.path}.${character.thumbnail.extension}`,
             description: character.description,
           },

@@ -45,29 +45,42 @@ export const comicsApiSlice = apiSlice.injectEndpoints({
       query: (id: number) => ({
         url: `comics/${id}`,
       }),
-      transformResponse: (response) => {
+      transformResponse: (response: APIResponse) => {
         const comic = response?.data?.results[0];
-        const description = comic.description || comic.textObjects.find((obj) => obj.type === "issue_solicit_text")?.text || "";
-        const formattedDescription = description.replace(/<br\s*\/?>/gi, "\n").replace(/<\/?[^>]+(>|$)/g, ""); // remove html elements from the descriptions
+        if (!comic) {
+          return null;
+        }
+        const description =
+          comic.description ||
+          comic.textObjects.find((obj) => obj.type === "issue_solicit_text")?.text ||
+          "";
+        const formattedDescription = description
+          .replace(/<br\s*\/?>/gi, "\n")
+          .replace(/<\/?[^>]+(>|$)/g, "");
+
+        const publishedDate = comic.dates && comic.dates[0] && comic.dates[0].date;
+        const focDate = comic.dates && comic.dates.find((date) => date.type === "focDate")?.date;
 
         return {
           data: {
             id: comic.id,
             title: comic.title,
             thumbnail: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
-            publishedDate: moment(comic.dates[0].date).format("MMMM D, YYYY"),
-            writer: comic.creators.items
-              .filter((item) => item.role.includes("writer"))
-              .map((item) => item.name)[0],
-            penciler: comic.creators.items
-              .filter((item) => item.role.includes("penciler"))
-              .map((item) => item.name)[0],
+            publishedDate: publishedDate ? moment(publishedDate).format("MMMM D, YYYY") : "",
+            writer:
+              comic.creators.items
+                .filter((item) => item.role.includes("writer"))
+                .map((item) => item.name)[0] || "",
+            penciler:
+              comic.creators.items
+                .filter((item) => item.role.includes("penciler"))
+                .map((item) => item.name)[0] || "",
             description: formattedDescription,
             details: {
-              format: comic.format,
-              price: comic.prices.price,
-              upc: comic.upc,
-              focDate: moment(comic.dates.find((date) => date.type === "focDate").date).format("MMMM D, YYYY"),
+              format: comic.format || "",
+              price: comic.prices?.price || "",
+              upc: comic.upc || "",
+              focDate: focDate ? moment(focDate).format("MMMM D, YYYY") : "",
               creators: comic.creators.items,
             },
             variants: comic.variants.map((variant) => variant.resourceURI.split("/").pop()),

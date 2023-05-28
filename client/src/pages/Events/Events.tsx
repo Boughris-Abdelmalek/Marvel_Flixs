@@ -7,7 +7,6 @@ import {
   SectionHeader,
   SectionTitle,
   LoaderContainer,
-  CardsGrid,
 } from "./styles";
 
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -23,8 +22,7 @@ import {
 import { useGetAllEventsQuery } from "../../features/Events/EventsApiSlice";
 import { CircularProgress } from "@mui/material";
 import Paginate from "../../components/Pagination/Pagination";
-import ComicCard from "../../components/ComicsCard/ComicCard";
-import { nanoid } from "@reduxjs/toolkit";
+import CardList from "../../components/Card/CardList";
 
 const Events: React.FC = () => {
   const [pagination, setPagination] = useState<Pagination>({ offset: 0, limit: 36 });
@@ -65,12 +63,7 @@ const Events: React.FC = () => {
           </LoaderContainer>
         ) : (
           <>
-            <CardsGrid>
-              {events &&
-                events.map((event) => (
-                  <ComicCard key={nanoid()} comic={event} redirectUrl={`/events/${event.id}`} />
-                ))}
-            </CardsGrid>
+            <CardList items={events} redirectUrl="/events" />
             <Paginate
               pagination={pagination}
               charactersCount={eventsCount}

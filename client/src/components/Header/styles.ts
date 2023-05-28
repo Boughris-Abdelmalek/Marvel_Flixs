@@ -59,4 +59,5 @@ export const NavigationLink = styled.li`
 
 export const NavLink = styled(Link)`
   all: unset;
+  text-transform: uppercase;
 `;
