@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import Layout from "./Layout";
+import Layout from "../pages/Layout/Layout";
 import Characters from "../pages/Characters/Characters";
 import Character from "../pages/Characters/Details";
 import Comics from "../pages/Comics/Comics";

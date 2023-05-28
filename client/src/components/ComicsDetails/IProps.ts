@@ -1,7 +1,12 @@
-import { Details } from "../../features/Comics/IComics";
+import { Creator } from "../../features/Comics/IComics";
 
 export interface IComicsDetails {
-  details: Details;
+  details: {
+    format: string;
+    upc: string;
+    focDate: string;
+    creators: Creator[];
+  };
 }
 
 export interface IDetailHero {

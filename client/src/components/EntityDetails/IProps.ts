@@ -1,9 +1,19 @@
-import { RootState } from "@reduxjs/toolkit/dist/query/core/apiState";
+import { RootState } from "../../app/store";
+import { ThunkAction } from "redux-thunk";
+import { AnyAction } from "redux";
 
-import { TypedUseQueryStateResult } from "@reduxjs/toolkit/dist/query/react";
+interface Data {
+  id: string;
+  name: string;
+  description: string;
+  thumbnail: string;
+}
 
 export interface IProps {
-  renderHook: TypedUseQueryStateResult<YourResult, unknown, any>;
-  selectEntityById: RootState;
-  getEntityById: (data) => void;
+  renderHook: (id: number) => {
+    isFetching: boolean;
+    data: Data;
+  };
+  selectEntityById: (state: RootState) => Data;
+  getEntityById: (data: Data) => ThunkAction<void, RootState, undefined, AnyAction>;
 }

@@ -14,20 +14,20 @@ export interface Creators {
   penciler: string;
 }
 
-interface ComicDate {
+export interface ComicDate {
   type: string;
   date: Date;
 }
-interface ComicPrice {
+export interface ComicPrice {
   type: string;
   price: number;
 }
-interface ComicSummary {
+export interface ComicSummary {
   resourceURI: string;
   name: string;
 }
 
-interface TextObject {
+export interface TextObject {
   type: string;
   language: string;
   text: string;

@@ -2,14 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const FooterSection = styled.footer`
-  position: relative;
-  bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 5rem;
-  min-height: 35vh;
   width: 100%;
   padding: 2rem;
   background-color: #202020;
