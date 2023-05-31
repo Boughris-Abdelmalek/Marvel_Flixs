@@ -12,7 +12,6 @@ import Event from "../pages/Events/Details";
 import Series from "../pages/Series/Series";
 import Serie from "../pages/Series/Details";
 import Comic from "../pages/Comics/Details";
-import Search from "../pages/Search/Search";
 
 const App: React.FC = () => {
   return (
@@ -29,7 +28,6 @@ const App: React.FC = () => {
           <Route path="/events/:id" element={<Event />} />
           <Route path="/series" element={<Series />} />
           <Route path="/series/:id" element={<Serie />} />
-          <Route path="/search" element={<Search />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
