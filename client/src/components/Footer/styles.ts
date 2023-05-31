@@ -6,6 +6,7 @@ export const FooterSection = styled.footer`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  bottom: 0;
   gap: 5rem;
   width: 100%;
   padding: 2rem;

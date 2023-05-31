@@ -1,16 +1,18 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { ReactNode } from "react";
 
-import { Container } from "@mui/material";
+import { Container, MainContent } from "./styles";
+import { Outlet } from "react-router-dom";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = () => {
   return (
-    <>
+    <Container>
       <Header />
-      {children}
+      <MainContent>
+        <Outlet />
+      </MainContent>
       <Footer />
-    </>
+    </Container>
   );
 };
 

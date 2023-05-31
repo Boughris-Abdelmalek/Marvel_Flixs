@@ -46,7 +46,7 @@ const Header = (): JSX.Element => {
         <LogoContainer>
           <LogoImage src={Logo} alt="MARVEL" />
         </LogoContainer>
-        <SearchIconContainer>
+        <SearchIconContainer to="/search">
           <SearchIcon sx={{ fontSize: "2rem" }} />
         </SearchIconContainer>
       </HeaderTop>

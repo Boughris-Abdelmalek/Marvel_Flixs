@@ -1,5 +1,6 @@
 const axios = require("axios");
 const crypto = require("crypto");
+require('dotenv').config()
 
 const API_BASE_URL = process.env.API_BASE_URL;
 const API_PUBLIC_KEY = process.env.API_PUBLIC_KEY;

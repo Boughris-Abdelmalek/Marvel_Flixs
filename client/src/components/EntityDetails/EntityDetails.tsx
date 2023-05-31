@@ -41,7 +41,7 @@ const EntityDetails: FC<IProps> = ({ renderHook, selectEntityById, getEntityById
         </LoaderContainer>
       ) : (
         <>
-          {/* <DetailsHeroSection backgroundImage={entity.thumbnail}>
+          <DetailsHeroSection backgroundImage={entity.thumbnail}>
             <DetailHeroContainer>
               <ImageContainer>
                 <Image src={entity.thumbnail} alt="Entity Image" />
@@ -56,7 +56,7 @@ const EntityDetails: FC<IProps> = ({ renderHook, selectEntityById, getEntityById
               <Title>Description</Title>
               <DescriptionText>{entity.description}</DescriptionText>
             </DescriptionSection>
-          )} */}
+          )}
         </>
       )}
     </>

@@ -27,7 +27,8 @@ export const LogoImage = styled.img`
   height: 100%;
 `;
 
-export const SearchIconContainer = styled.div`
+export const SearchIconContainer = styled(Link)`
+  all: unset;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,6 +36,7 @@ export const SearchIconContainer = styled.div`
   aspect-ratio: 1;
   border: 1px solid grey;
   border-bottom: none;
+  cursor: pointer;
 `;
 
 export const Navigation = styled.nav`
