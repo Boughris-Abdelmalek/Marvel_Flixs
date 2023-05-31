@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 export const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 5.75rem;
   background-color: #202020;
   color: white;
@@ -25,18 +27,6 @@ export const LogoContainer = styled.div`
 export const LogoImage = styled.img`
   width: 100%;
   height: 100%;
-`;
-
-export const SearchIconContainer = styled(Link)`
-  all: unset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  aspect-ratio: 1;
-  border: 1px solid grey;
-  border-bottom: none;
-  cursor: pointer;
 `;
 
 export const Navigation = styled.nav`

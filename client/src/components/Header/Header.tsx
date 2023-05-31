@@ -12,7 +12,6 @@ import {
   NavigationLinks,
   NavigationLink,
   NavLink,
-  SearchIconContainer,
 } from "./styles";
 import { nanoid } from "@reduxjs/toolkit";
 
@@ -46,9 +45,6 @@ const Header = (): JSX.Element => {
         <LogoContainer>
           <LogoImage src={Logo} alt="MARVEL" />
         </LogoContainer>
-        <SearchIconContainer to="/search">
-          <SearchIcon sx={{ fontSize: "2rem" }} />
-        </SearchIconContainer>
       </HeaderTop>
       <Navigation>
         <NavigationLinks>

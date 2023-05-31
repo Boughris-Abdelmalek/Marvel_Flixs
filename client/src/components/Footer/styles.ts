@@ -39,6 +39,11 @@ export const Section = styled.div`
 export const Logo = styled.img`
   width: 100%;
   height: 10rem;
+
+  @media (max-width: 450px) {
+    height: 7rem;
+    margin: 3rem 0;
+  }
 `;
 
 export const SectionTitle = styled.h3`

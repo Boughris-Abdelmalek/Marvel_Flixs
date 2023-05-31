@@ -37,7 +37,7 @@ const Footer = () => {
       </Section>
       <Section>
         <SectionTitle>App developed by: </SectionTitle>
-        <SectionItem to="">©2023 THE MARVELVERSE</SectionItem>
+        <SectionItem to="/">©2023 THE MARVELVERSE</SectionItem>
       </Section>
     </FooterSection>
   );
